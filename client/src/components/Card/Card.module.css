@@ -1,0 +1,17 @@
+.card{
+    border: 1px solid black;
+    max-width: 200px; /* Ancho máximo */
+    flex-grow: 1; /* Permite que los elementos crezcan automáticamente */
+    height: 330px;
+    border-radius: 10px;
+    font-family:Verdana, sans-serif;
+
+
+    
+}
+
+.cardLink{
+    
+  text-decoration: none; /* Establece el subrayado a ninguno */
+  color: inherit; /* Hereda el color del texto */
+}

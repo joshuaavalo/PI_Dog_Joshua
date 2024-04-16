@@ -1,0 +1,12 @@
+// creamos una constante en donde declaramos todas las posibles rutas. 
+// esta es una buena practica que se utiliza para evitar problemas cuando la app se vuelve muy grande. 
+
+const PATHROUTES = {
+    
+    LANDING:"/",
+    HOME: "/home",
+    DETAIL:"/detail",
+    FORM:"/form",
+}
+
+export default PATHROUTES;
