@@ -63,8 +63,9 @@ const Home = () => {
         </button>
         <button onClick={handleSortByWeight} className={style.sortButton}>
           Ordenar por Peso
-        </button>
+        </button><br></br>
       </div>
+      <br />
       <CardsContainer dogs={dogs} />
     </div>
   );

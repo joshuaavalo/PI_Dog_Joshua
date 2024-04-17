@@ -14,7 +14,9 @@
   min-height: 300px; /* Establece una altura mínima fija para cada card */
   /* Ajusta la altura mínima según sea necesario */
 }
-
+.card:hover {
+  transform: scale(1.1); /* Cambia el tamaño al 110% cuando el mouse pase sobre la card */
+}
 .paginate {
   display: flex;
   justify-content: center;

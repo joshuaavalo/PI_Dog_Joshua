@@ -42,6 +42,7 @@ const CarsContainer = () => {
       ))}
       {nPages !== 0 ? (
         <div className={style.paginate}>
+          <br />
           {" "}
           <button className="botonpage" onClick={prevPage}>
             Anterior
