@@ -7,6 +7,7 @@ const PATHROUTES = {
     HOME: "/home",
     DETAIL:"/detail/:id",
     FORM:"/form",
+    PRUEBA:"/prueba",
 }
 
 export default PATHROUTES;

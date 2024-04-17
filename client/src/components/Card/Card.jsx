@@ -6,12 +6,13 @@ import style from "./Card.module.css";
 
 
 const Card = ({props}) => {
-
+//console.log("soy el props",{props});
   return (
     <Link to={`/detail/${props.id}`} className={style.cardLink}> {/* Usa Link con la URL de detalle */}
       <div className={style.card}>
         <p>Nombre: {props.name}</p>
         <img src={props.image} alt="not found"/>
+        <p>Temperaments: {props.temperament}</p>
         <p>Altura: min {props.height_min}cm - max {props.height_max}cm</p>
         <p>Peso: min {props.weight_min}kg - max {props.weight_max}kg</p>
         <p>Años De Vida: {props.life_span}</p>

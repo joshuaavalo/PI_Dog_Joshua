@@ -1,33 +1,3 @@
-// import axios from "axios";
-
-
-// export const GET_DOGS = "GET_DOGS";
-// export const GET_DOG = "GET_DOG";
-
-
-// export const getDogs = () => {
-//     return async function(dispatch){
-//         const apiData = await axios.get(
-//             `https://api.thedogapi.com/v1/breeds`
-//             );
-//             const dogs = apiData.data;
-//             dispatch({ type: GET_DOGS, payload: dogs})
-//     };
-// };
-
-
-
-
-// export const getDog = (id) => {  // ver como es el tema con el apikey
-//     return async function(dispatch){
-//         const apiData = await axios.get(
-//             `https://api.thedogapi.com/v1/breeds/${id}`
-//             );
-//             const dog = apiData.data;
-//             dispatch({ type: GET_DOG, payload: dog})
-//     };
-// };
-
 import axios from "axios";
 
 export const GET_DOGS = "GET_DOGS";
@@ -65,6 +35,105 @@ export function getDogsByName(name) {
           payload: data
       });
   };
+}
+
+export function getDogsByTemperament(temperament) {
+  return async function (dispatch) {
+      const { data } = await axios.get(`http://localhost:3001/dog/?temperament=${temperament}`);
+      return dispatch({
+          type: "GET_DOGS_BY_TEMPERAMENT",
+          payload: data
+      });
+  };
+}
+
+
+export function orderByName(payload) {
+  return {
+      type: 'ORDER_BY_NAME',
+      payload
+  }
+}
+
+export function orderByWeight(payload) {
+  return {
+      type: 'ORDER_BY_WEIGHT',
+      payload
+  }
+}
+
+
+export function filterDogsByMAXWeight(payload) {
+  return {
+      type: 'FILTER_BY_MAX_WEIGHT',
+      payload
+  }
+}
+
+export function filterDogsByMINWeight(payload) {
+  return {
+      type: 'FILTER_BY_MIN_WEIGHT',
+      payload
+  }
+}
+
+
+
+export function getTemperamentsList() {
+  return async function (dispatch) {
+      var json = await axios.get('http://localhost:3001/temperament');
+      var listOfTemperaments = json.data.map(el => el.name)
+      return dispatch({
+          type: 'GET_TEMPERAMENTS_LIST',
+          payload: listOfTemperaments
+      });
+  }
+}
+
+
+
+export function getDogsByBreed(payload) {
+  return async function (dispatch) {
+      try {
+          var json = await axios.get(`http://localhost:3001/breedGroup?breedGroup=${payload}`);
+          return dispatch({
+              type: 'GET_DOGS_BY_BREED',
+              payload: json.data
+          })
+      } catch (error) {
+          console.log(error, "Error on the filters in actions file")
+      }
+  }
+}
+
+export function getBreeds() {
+  return async function (dispatch) {
+      var json = await axios.get('http://localhost:3001/breedGroups');
+      return dispatch({
+          type: 'GET_BREEDS',
+          payload: json.data
+      });
+  }
+}
+
+export function filterDogsByTemperament(payload) {
+  return async function (dispatch) {
+      try {
+          var json = await axios.get(`http://localhost:3001/dog/?temperament=${payload}`);
+          return dispatch({
+              type: 'GET_DOGS_BY_TEMP',
+              payload: json.data
+          })
+      } catch (error) {
+          console.log(error, "Error on the filters in actions file")
+      }
+  }
+}
+export function filterCreated(payload) {
+  return {
+      type: 'FILTER_CREATED',
+      payload
+  }
 }
 
 //https://api.thedogapi.com/v1/breeds/search?q={raza_perro}

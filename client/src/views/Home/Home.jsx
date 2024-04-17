@@ -1,11 +1,12 @@
 // Home.js
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs } from '../../redux/actions';
+import { getDogs, getDogsByTemperament } from '../../redux/actions';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import CardsContainer from '../../components/CardsContainer/CardsContainer';
 import style from './Home.module.css';
 import NavBar from "../../components/NaBar/NavBar";
+import SideBar from '../../components/SideBar/SideBar';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,9 @@ const Home = () => {
 
   const dogs = useSelector((state) => state.dogs);
 
-  const handleFilterByTemperament = (temperament) => {
-    const filteredDogs = dogs.filter(dog => dog.temperament.includes(temperament));
+  const handleFilterByTemperament= (temperament) => {
+    dispatch(getDogsByTemperament(temperament));
+    // const filteredDogs = dogs.filter(dog => dog.temperament.includes(temperament));
     // Aquí podrías hacer algo con los perros filtrados, por ejemplo, actualizar el estado local
   };
 
@@ -44,11 +46,13 @@ const Home = () => {
   };
 
   return (
+    <Fragment>
     <div className={style.homeContainer}>
       
       <h1 className={style.homeTitle}>HOME PAGE</h1>
       <div className={style.filters}>
         <SearchBar className={style.searchBar} />
+        
         <button onClick={() => handleFilterByTemperament('Active')} className={style.filterButton}>
           Filtrar por Temperamento Activo
         </button>
@@ -57,8 +61,8 @@ const Home = () => {
         </button>
         <button onClick={() => handleFilterByOrigin('Database')} className={style.filterButton}>
           Filtrar por Origen Base de Datos
-        </button>
-        <button onClick={handleSortAlphabetically} className={style.sortButton}>
+        </button> 
+         <button onClick={handleSortAlphabetically} className={style.sortButton}>
           Ordenar Alfabéticamente
         </button>
         <button onClick={handleSortByWeight} className={style.sortButton}>
@@ -68,6 +72,7 @@ const Home = () => {
       <br />
       <CardsContainer dogs={dogs} />
     </div>
+    </Fragment>
   );
 };
 
