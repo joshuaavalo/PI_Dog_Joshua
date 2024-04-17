@@ -1,17 +1,16 @@
-.card{
-    border: 1px solid black;
-    max-width: 200px; /* Ancho máximo */
-    flex-grow: 1; /* Permite que los elementos crezcan automáticamente */
-    height: 330px;
-    border-radius: 10px;
-    font-family:Verdana, sans-serif;
-
-
-    
+.cardLink {
+  text-decoration: none; /* Quita el subrayado del enlace */
 }
 
-.cardLink{
-    
-  text-decoration: none; /* Establece el subrayado a ninguno */
-  color: inherit; /* Hereda el color del texto */
+.card {
+  border: 2px solid #ccc; /* Borde de 2px sólido */
+  border-radius: 8px; /* Borde redondeado */
+  padding: 20px; /* Espaciado interno */
+  text-align: center; /* Alinea el contenido al centro */
+  background-color: #f9f9f9; /* Color de fondo */
+}
+
+.card img {
+  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+  height: auto; /* Ajusta la altura automáticamente */
 }

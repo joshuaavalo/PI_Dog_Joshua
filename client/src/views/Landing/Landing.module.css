@@ -22,9 +22,23 @@
     height: 100%; /* Ocupa todo el alto disponible */
 }
 
+
+.title1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #034a23;
+    font-size: 40px;
+    font-family: Georgia, serif;
+    text-align: center
+}
+
 .title {
     font-size: 3rem;
     margin-bottom: 30px;
+    color: #dddddd;
+    font-size: 40px;
+    font-family: Georgia, serif;
+    text-align: center
 }
 
 .button {

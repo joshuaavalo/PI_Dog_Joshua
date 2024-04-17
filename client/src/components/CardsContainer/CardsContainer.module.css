@@ -1,62 +1,35 @@
-/* Estilos para el contenedor de las cards */
 .container {
-    display: grid; /* Utiliza un layout de cuadrícula */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Establece columnas automáticas que se ajustan al ancho del contenedor y tienen un mínimo de 250px */
-    gap: 20px; /* Espacio entre las cards */
-    justify-content: center;
-  }
-  
-  /* Estilos para cada card individual */
-  .card {
-    background-color: #ffffff; /* Color de fondo de la card */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    transition: transform 0.3s ease; /* Transición suave en la transformación */
-  }
-  
-  /* Efecto de hover para la card */
-  .card:hover {
-    transform: translateY(-5px); /* Levanta la card ligeramente en el hover */
-  }
-  
-  /* Estilos para la imagen dentro de la card */
-  .card img {
-    width: 100%; /* Ajusta la imagen al ancho completo de la card */
-    border-top-left-radius: 8px; /* Bordes redondeados superiores */
-    border-top-right-radius: 8px; /* Bordes redondeados superiores */
-  }
-  
-  /* Estilos para el contenido de la card */
-  .card .card-info {
-    padding: 16px; /* Espaciado interno */
-  }
-  
-  /* Estilos para el título dentro de la card */
-  .card h2 {
-    font-size: 1.2rem; /* Tamaño de fuente del título */
-    margin-bottom: 8px; /* Margen inferior */
-  }
-  
-  /* Estilos para el texto dentro de la card */
-  .card p {
-    margin: 0; /* Elimina el margen exterior */
-    color: #666666; /* Color del texto */
-    font-size: 0.9rem; /* Tamaño de fuente */
-  }
-  
-  /* Ajustes de margen para el primer y último párrafo */
-  .card p:first-child {
-    margin-top: 4px; /* Margen superior */
-  }
-  
-  .card p:last-child {
-    margin-bottom: 4px; /* Margen inferior */
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
 
-  .paginate{
-    background-color: blue;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-  }
+.card {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  min-height: 300px; /* Establece una altura mínima fija para cada card */
+  /* Ajusta la altura mínima según sea necesario */
+}
+
+.paginate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.botonpage {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+}
+
+.labelpage {
+  margin: 0 10px;
+}

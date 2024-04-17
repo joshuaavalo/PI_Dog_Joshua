@@ -48,14 +48,24 @@ export const getDogs = () => {
 export const getById = (id) => {
   return async function (dispatch) {
     try {
-      const apiData = await axios.get(`https://api.thecatapi.com/v1/images/${id}`);
+      const apiData = await axios.get(`http://localhost:3001/dogs/${id}`);
       const dog = apiData.data;
       dispatch({ type: GET_DOG_BY_ID, payload: dog });
     } catch (error) {
-      console.error(`Error fetching dog with ID ${id}:`, error);
+      console.error(`Error fetching dog`, error);
     }
   };
 };
+
+export function getDogsByName(name) {
+  return async function (dispatch) {
+      const { data } = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+      return dispatch({
+          type: "GET_DOGS_BY_NAME",
+          payload: data
+      });
+  };
+}
 
 //https://api.thedogapi.com/v1/breeds/search?q={raza_perro}
 

@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { getDogsByName } from '../../redux/actions';
+import styles from "./SearchBar.module.css";
 
-const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+export default function SearchBar() {
+  const [dogState, setDogsState] = useState("");
+  const dispatch = useDispatch();
 
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
-    // Llamar a la función de búsqueda del componente padre
-    if (onSearch) {
-      onSearch(event.target.value);
+  function handleClick(e) {
+    e.preventDefault();
+    
+    if (dogState.length === 0) {
+      return alert("Please input a name to start the search");
+    } else {
+      dispatch(getDogsByName(dogState));
+      setDogsState("");
     }
-  };
+  }
 
   return (
-    <div>
+    <div className={styles.searchBarObject}>
       <input
         type="text"
-        placeholder="Buscar por nombre de raza..."
-        value={searchTerm}
-        onChange={handleInputChange}
+        placeholder="Search a dog..."
+        className={styles.input}
+        value={dogState}
+        onChange={(e) => setDogsState(e.target.value)}
       />
+      <button type="submit" onClick={handleClick}>
+        <span className="material-icons">search</span>
+      </button>
     </div>
   );
-};
-
-export default SearchBar;
+}

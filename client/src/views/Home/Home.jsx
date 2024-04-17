@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+// Home.js
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDogs } from '../../redux/actions';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import CarsContainer from '../../components/CardsContainer/CardsContainer';
-import NavBar from '../../components/NaBar/NavBar';
-import Pagination from '../../components/Pagination/Pagination';
+import CardsContainer from '../../components/CardsContainer/CardsContainer';
 import style from './Home.module.css';
+import NavBar from "../../components/NaBar/NavBar";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
-  const dogsPerPage = 8;
 
   useEffect(() => {
     dispatch(getDogs());
@@ -18,34 +16,36 @@ const Home = () => {
 
   const dogs = useSelector((state) => state.dogs);
 
-  const indexOfLastDog = currentPage * dogsPerPage;
-  const indexOfFirstDog = indexOfLastDog - dogsPerPage;
-  const currentDogs = dogs?.slice(indexOfFirstDog, indexOfLastDog);
-
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
   const handleFilterByTemperament = (temperament) => {
-    // Lógica para filtrar por temperamento
+    const filteredDogs = dogs.filter(dog => dog.temperament.includes(temperament));
+    // Aquí podrías hacer algo con los perros filtrados, por ejemplo, actualizar el estado local
   };
 
   const handleFilterByOrigin = (origin) => {
-    // Lógica para filtrar por origen (API o base de datos)
+    const filteredDogs = dogs.filter(dog => {
+      if (origin === 'API') {
+        return !dog.createdInDB;
+      } else if (origin === 'Database') {
+        return dog.createdInDB;
+      }
+      return true; // Retorna todos si no se especifica origen
+    });
+    // Aquí podrías hacer algo con los perros filtrados, por ejemplo, actualizar el estado local
   };
 
   const handleSortAlphabetically = () => {
-    // Lógica para ordenar alfabéticamente
+    const sortedDogs = [...dogs].sort((a, b) => a.name.localeCompare(b.name));
+    // Aquí podrías hacer algo con los perros ordenados alfabéticamente, por ejemplo, actualizar el estado local
   };
 
   const handleSortByWeight = () => {
-    // Lógica para ordenar por peso
+    const sortedDogs = [...dogs].sort((a, b) => a.weight - b.weight);
+    // Aquí podrías hacer algo con los perros ordenados por peso, por ejemplo, actualizar el estado local
   };
 
   return (
     <div className={style.homeContainer}>
-      <NavBar/>
-
+      
       <h1 className={style.homeTitle}>HOME PAGE</h1>
       <div className={style.filters}>
         <SearchBar className={style.searchBar} />
@@ -65,13 +65,7 @@ const Home = () => {
           Ordenar por Peso
         </button>
       </div>
-      <CarsContainer dogs={currentDogs} />
-      <Pagination
-        totalDogs={dogs.length}
-        dogsPerPage={dogsPerPage}
-        currentPage={currentPage}
-        paginate={paginate}
-      />
+      <CardsContainer dogs={dogs} />
     </div>
   );
 };

@@ -1,46 +1,31 @@
-/* Home.module.css */
-
 .homeContainer {
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-    padding: 20px; /* Añade un espacio interno al contenedor */
-  }
-  
-  .homeTitle {
-    font-size: 2rem; /* Tamaño de fuente del título */
-    margin-bottom: 20px; /* Margen inferior */
-    text-align: center; /* Centra el título horizontalmente */
-  }
-  
-  .searchBar {
-    margin-bottom: 20px; /* Margen inferior */
-  }
-  
-  .cardsContainer {
-    display: grid; /* Utiliza un layout de cuadrícula */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas automáticas que se ajustan al ancho del contenedor */
-    gap: 20px; /* Espacio entre las cards */
-    justify-items: center; /* Centra horizontalmente las cards */
-    justify-content: center;
-  }
-  
-  .paginationContainer {
-    display: flex; /* Utiliza un layout de fila */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    margin-top: 20px; /* Margen superior */
-  }
-  
-  .paginationButton {
-    background-color: #007bff; /* Color de fondo del botón */
-    color: #ffffff; /* Color del texto */
-    border: none; /* Elimina el borde */
-    border-radius: 4px; /* Bordes redondeados */
-    padding: 8px 16px; /* Espaciado interno */
-    margin: 0 4px; /* Margen entre los botones */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    transition: background-color 0.3s ease; /* Transición suave en el cambio de color */
-  }
-  
-  .paginationButton:hover {
-    background-color: #0056b3; /* Cambia el color de fondo al pasar por encima */
-  }
+  text-align: center; /* Alinea el contenido al centro */
+}
+
+.homeTitle {
+  margin-top: 40px; /* Espacio superior */
+}
+
+.filters {
+  margin-top: 20px; /* Espacio superior */
+}
+
+.searchBar {
+  margin-bottom: 10px; /* Espacio inferior */
+}
+
+.filterButton {
+  background-color: #28a745; /* Color de fondo del botón de filtro */
+  color: #fff; /* Color del texto */
+  border: none; /* Quita el borde */
+  padding: 10px 20px; /* Espaciado interno */
+  margin: 0 5px; /* Margen entre botones */
+}
+
+.sortButton {
+  background-color: #17a2b8; /* Color de fondo del botón de ordenar */
+  color: #fff; /* Color del texto */
+  border: none; /* Quita el borde */
+  padding: 10px 20px; /* Espaciado interno */
+  margin: 0 5px; /* Margen entre botones */
+}
